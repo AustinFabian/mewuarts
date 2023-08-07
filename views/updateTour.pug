@@ -1,0 +1,116 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title
+.container
+  // section header
+  .header
+    .headerdiv1
+      a(href='/') All Arts
+    .headerdiv2
+      img.img1(src='/img/Austin FX LOGO.png', alt='')
+    .headerdiv3
+      a.button.but2(href='/')
+        | View All Arts
+    #bars.bar
+      i.fa.fa-bars(style='color: white;')
+  .containment
+    .hidden
+      ul.ul1
+        li
+          a(href='/') View All Arts
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#') About us
+        li
+          a(href='#') Contact
+        span#id(title=`${tour.id}`)
+    // section update tour form
+    .login
+      form.form.form-tour-update
+        h2.p1= `UPDATE ${tour.name.toUpperCase()}`
+        label(for='tourName')
+          p.span1 Art Name
+          input.input#tour-name(value=`${tour.name}`, type='text')
+        br
+        label(for='duration')
+          p.span1 Art Duration(How long till completion)
+          input.input#duration(value=`${tour.duration}`, type='text', required)
+        br
+        fieldset.fieldset
+          legend ART PUBLISH DATE
+          label(for='startDate')
+            p.span2 Date
+            input.input#start-date1(type='date', value=`${new Date(tour.startDates[0]).toISOString().split("").splice(0,10).join("")}`)
+          //- br
+          //- label(for='startDate')
+          //-   p.span2 Start Date(2)
+          //-   input.input#start-date2(type='date', value=`${new Date(tour.startDates[1]).toISOString().split("").splice(0,10).join("")}`)
+          //- br
+          //- label(for='startDate')
+          //-   p.span2 Start Date(3)
+          //-   input.input#start-date3(type='date', value=`${new Date(tour.startDates[2]).toISOString().split("").splice(0,10).join("")}`)
+        br
+        fieldset.fieldset
+          legend LOCATION OF WHERE ART CAN BE SEEN
+          label(for='startLocation')
+            p.span2 Start Location(1)
+            input.input#start-location1(value=`${tour.startLocation.description}`, type='text')
+          //- br
+          //- label(for='startLocation')
+          //-   p.span2 Start Location(2)
+          //-   input.input(placeholder='Miami, USA', type='text')
+          //- br
+          //- label(for='startLocation')
+          //-   p.span2 Start Location(3)
+          //-   input.input(placeholder='Miami, USA', type='text')
+          //- br
+          //- label(for='startLocation')
+          //-   p.span2 Start Location(4)
+          //-   input.input(placeholder='Miami, USA', type='text')
+        br
+        //- label(for='difficulty')
+        //-   p.span2 Difficulty
+        //-   input.input#difficulty(value=`${tour.difficulty}`, type='text')
+        //- br
+        //- label(for='maxGroup')
+        //-   p.span2 Max Group Size
+        //-   input.input.small#max-group-size(value=`${tour.maxGroupSize}`, type='number')
+        br
+        label(for='price')
+          p.span2 Price
+          input.input.small#price(value=`${tour.price}`, type='number')
+        br
+        span IMAGES ARE REQUIRED AGAIN!!!
+        p(style='min-height: 50px; padding-bottom: 20px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;')
+          input.form__upload(type='file', accept='image/*', id='coverImage', name='imageCover')
+          label.but10(for='coverImage')
+            | Cover Image
+          input.form__upload(type='file', accept='image/*',id='photo1', name='photo1')
+          label.but10(for='photo1')
+            | Image one
+          input.form__upload(type='file', accept='image/*', id='photo2', name='photo2')
+          label.but10(for='photo2')
+            | Image two
+          input.form__upload(type='file', accept='image/*', id='photo3', name='photo3')
+          label.but10(for='photo3')
+            | Image three
+        p(style='padding-bottom: 20px;')
+          | Tour Description
+          br
+          textarea.input#description(value=`${tour.description}`, placeholder=`${tour.description}`, name='description', cols='30', rows='5' required)
+          p(style='padding-bottom: 20px;')
+          | Summary 
+          br
+          textarea.input#summary(value=`${tour.summary}`, placeholder=`${tour.summary}`, name='summary', cols='30', rows='3', required)
+        p.p2
+          button.but3a#update
+            | Update Tour
+    // section footer
+    include _footer

@@ -1,0 +1,149 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css', rel='stylesheet')
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title 
+.container
+  // section header
+  include _header
+  .containment
+    .errorMsg#errors 
+      span#spanErrors 
+    include _hidden
+    // section tour detail1
+    .detail1(style=`background-image: url(/img/tours/${tour.imageCover});`)
+      .t1
+        p.p7(style='text-transform:uppercase;')=`${tour.name}`
+        ul.ul5
+          li(style="display:flex; align-items: center;")
+            i.fa.fa-clock-o(style='font-size: 22px;')
+            span=`${tour.duration}`
+          li(style="display:flex; align-items: center;")
+            i.fa.fa-map-marker(style='font-size: 22px;')
+            span=`${tour.startLocation.description}`
+            span#getTourId(title=`${tour.id}`)
+    // section tour detail2
+    .detail2
+      .t2
+        div
+          p.p8
+            | QUICK FACTS
+          ul.ul6
+            li
+              - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year : 'numeric'})
+              i.fa.fa-calendar-o(style='font-size: 22px;')
+              |  PUBLISHED ON
+              span(style='padding: 0 20px; font-weight: 300;')= date
+            //- li
+            //-   i.fa.fa-line-chart(style='font-size: 22px;')
+            //-   |  DIFFICULTY 
+            //-   span(style='padding: 0 20px; font-weight: 300;')=tour.difficulty
+            //- li
+            //-   i.fa.fa-user(style='font-size: 22px;')
+            //-   |  PARTICIPANTS 
+            //-   span(style='padding: 0 20px; font-weight: 300;')=`${tour.maxGroupSize} people`
+            li
+              i.fa.fa-star-o(style='font-size: 22px;')
+              |  RATING 
+              span(style='padding: 0 20px; font-weight: 300;')=`${tour.ratingsAverage} / 5`
+      .t3
+        div
+          p.p8
+            span(style='text-transform: uppercase;')=`ABOUT THE ${tour.name} ART`
+          p.p9= tour.description 
+    // section detail3
+    .detail3
+      .carousel.owl-carousel
+        each img, i in tour.images
+          .card
+            .box1(style=`background-image: url(/img/tours/${img});`)
+    // Section map
+    .mapb
+      #map(data-locations=`${JSON.stringify(tour.startLocation)}`)
+    // section reviews
+    .review
+      .carousel.owl-carousel
+        // Drop a review part
+        - if(tour.reviews.length > 0)
+            .card
+              .box.reviews
+                p.p10
+                  span.span9 @MEWUARTS
+                br
+                p.p11
+                  | Art is not a mirror held up to reality, but a hammer with which to shape it
+                  br
+                  | (Karl marx/Berthold Brecht, 1898-1956)
+                p
+                  button#tourReview.but3
+                    | Drop a Review
+            each review in tour.reviews
+              .card
+                .box
+                  p.p10
+                    img.photo3(style='width: 50px;', src=`/img/users/${review.user.photo}`, alt='')
+                    span.span9= review.user.name
+                  br
+                  p.p11=review.review
+        - if(tour.reviews.length === 0)
+            .card
+                .box2(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                  p.p10(style='font-size:22px;')
+                    | DROP A REVIEW 
+                    i.fa.fa-arrow-right(style='font-size: 60px; color:black')
+            .card
+              .box.reviews
+                p.p10
+                  span.span9 @MEWUARTS
+                br
+                p.p11
+                  | Art is a line around your thoughts 
+                  br
+                  | (Gustav klimt,1862-1918)
+                p
+                  button#tourReview.but3
+                    | Drop a Review
+            .card
+                .box2(style='text-align:center; color:white; display:flex; align-items:center; justify-content:center;')
+                  p.p11
+                    | No reviews on this tour Yet
+            
+            
+                    
+      form#formReview.reviewForm
+        p.p32
+          label(for='review')
+          input.reviewInput#userReview(type='text', placeholder='Drop your review here')
+          button.invincible
+            i.fa.fa-paper-plane
+    // section  detail4
+    .detail4
+      .detail4a
+        .cta__img.cta__img--logo
+          img.photo5(style=`background-image:url(/img/tours/${tour.images[1]}); background-size:cover;background-position:center;`)
+        img.cta__img.cta__img--1.photo6(style=`background-image:url(/img/tours/${tour.images[0]}); background-size:cover;background-position:center;`)
+        img.cta__img.cta__img--2.photo6(style=`background-image:url(/img/tours/${tour.images[2]});background-size:cover;background-position:center;`)
+      .detail4b
+        p
+        p.p8 THANK YOU FOR VIEWING MY PIECE.
+        //- span Get your piece of art work just like this!
+        //- p
+        //- p(style='margin-top: 30px;')
+        //-   if user
+        //-     button.but3#book-tour(data-tour-id=`${tour.id}`)
+        //-       | Book Tour Now
+        //-   else 
+        //-     a.but33(href='/login')
+        //-       | Login to Book a Tour
+    // section footer
+    include _footer

@@ -1,0 +1,159 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title 
+.container
+  // section header
+  .header
+    .headerdiv1
+      a(href='/') All Arts
+    .headerdiv2
+      p.logo MEWUARTS
+    .headerdiv3
+      a.button.but2(href='/')
+        | View All Arts
+    #bars.bar
+      i.fa.fa-bars(style='color: white;')
+  .containment
+    .hidden
+      ul.ul1
+        li
+          a(href='/') View All Arts
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#')
+            i.fa.fa-instagram
+        li
+          a(href='#')
+            i.fa.fa-whatsapp
+    // section crete tour form
+    .login
+      form.form.form-create-tour
+        h2.p1 POST NEW ART
+        label(for='tourName')
+          p.span1 Art Name
+          input.input#tour-name(placeholder='The Sea Explorer', type='text', required)
+        br
+        label(for='duration')
+          p.span1 Art Duration(How long till completion)
+          input.input#duration(placeholder='How long did this piece take', type='text', required)
+        br
+        fieldset.fieldset
+          legend ART PUBLISH DATE
+          label(for='startDate')
+            p.span2 Date
+            input.input#start-date1(type='date', required)
+          //- br
+          //- label(for='startDate')
+          //-   p.span2 Start Date(2)
+          //-   input.input#start-date2(type='date')
+          //- br
+          //- label(for='startDate')
+          //-   p.span2 Start Date(3)
+          //-   input.input#start-date3(type='date')
+        br
+        fieldset.fieldset
+          legend LOCATION OF WHERE ART CAN BE SEEN
+          label(for='startLocation')
+            p.span2 Location
+            input.input#start-location1(placeholder='Miami USA', type='text', required)
+          //- br
+          //- label(for='Location1')
+          //-   p.span2 Location(1)
+          //-   input.input#location1(placeholder='Miami, USA', type='text')
+          //- br
+          //- label(for='Location2')
+          //-   p.span2 Location(2)
+          //-   input.input#location2(placeholder='Miami, USA', type='text')
+          //- br
+          //- label(for='Location3')
+          //-   p.span2 Location(3)
+          //-   input.input#location3(placeholder='Miami, USA', type='text')
+          //- br
+          //- label(for='Location4')
+          //-   p.span2 Location(4)
+          //-   input.input#location4(placeholder='Miami, USA', type='text')
+        fieldset.fieldset
+          legend CO-ORDINATE(S) OF WHERE ART CAN BE SEEN
+          label(for='startLocation')
+            p.span2 Start Location-co-ordinate
+            input.input#start-location-co-ordinate1(placeholder='Location Co-ordinate(Longitude)', type='number', required, step='any')
+            input.input#start-location-co-ordinate2(placeholder='Location Co-ordinate(Latitude)', type='number', required, step='any')
+        //-   br
+        //-   label(for='startLocation')
+        //-     p.span2 Location(1)-cordinate
+        //-     input.input#location1-cordinate1(placeholder='Location Co-ordinate(Longitude)', type='number', step='any', value='-123.0211835')
+        //-     input.input#location1-cordinate2(placeholder='Location Co-ordinate(Latitude)', type='number', step='any', value='38.0680879')
+        //-   br
+        //-   label(for='startLocation')
+        //-     p.span2 Location(2)-cordinate
+        //-     input.input#location2-cordinate1(placeholder='Location Co-ordinate(Longitude)', type='number',step='any')
+        //-     input.input#location2-cordinate2(placeholder='Location Co-ordinate(Latitude)', type='number', step='any')
+        //-   br
+        //-   label(for='startLocation')
+        //-     p.span2 Start Location(3)-cordinate
+        //-     input.input#location3-cordinate1(placeholder='Location Co-ordinate(Longitude)', type='number', step='any')
+        //-     input.input#location3-cordinate2(placeholder='Location Co-ordinate(Latitude)', type='number', step='any')
+        //-   br
+        //-   label(for='startLocation')
+        //-     p.span2 Start Location(4)-cordinate
+        //-     input.input#location4-cordinate1(placeholder='Location Co-ordinate(Longitude)', type='number',step='any')
+        //-     input.input#location4-cordinate2(placeholder='Location Co-ordinate(Latitude)', type='number', step='any')
+        //- br
+        //- label(for='difficulty')
+        //-   p.span2 Difficulty
+        //-   input.input#difficulty(placeholder='Easy/Medium/Difficult', type='text', required)
+        //- br
+        //- label(for='maxGroup')
+        //-   p.span2 Max Group Size
+        //-   input.input.small#max-group-size(placeholder='Number', type='number', required)
+        //- br
+        label(for='price')
+          p.span2 WORTH OF ART(IN $)
+          input.input.small#price(placeholder='Number', type='number', required)
+        br
+        span IMAGES ARE REQUIRED!!!
+        p(style='min-height: 50px; padding-bottom: 20px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;')
+          input.form__upload(type='file', accept='image/*', id='coverImage', name='imageCover')
+          label.but10(for='coverImage')
+            | Cover Image
+          input.form__upload(type='file', accept='image/*',id='photo1', name='photo1')
+          label.but10(for='photo1')
+            | Image one
+          input.form__upload(type='file', accept='image/*', id='photo2', name='photo2')
+          label.but10(for='photo2')
+            | Image two
+          input.form__upload(type='file', accept='image/*', id='photo3', name='photo3')
+          label.but10(for='photo3')
+            | Image three
+          input.form__upload(type='file', accept='image/*', id='photo4', name='photo4')
+          label.but10(for='photo4')
+            | Image four
+          input.form__upload(type='file', accept='image/*', id='photo5', name='photo5')
+          label.but10(for='photo5')
+            | Image five
+          input.form__upload(type='file', accept='image/*', id='photo6', name='photo6')
+          label.but10(for='photo6')
+            | Image six
+          //- input.form__upload(type='file', accept='video/*', id='videoa', name='videoa')
+          //- label.but10(for='videoa')
+          //-   | Video Upload(Optional)
+        p(style='padding-bottom: 20px;')
+          | Art Piece Description
+          br
+          textarea.input#description(placeholder='Tour Description...', name='description', cols='30', rows='5' required)
+          p(style='padding-bottom: 20px;')
+          | Summary 
+          br
+          textarea.input#summary(placeholder='Tour Summary...', name='summary', cols='30', rows='3', required)
+        p.p2
+          button.but3a#create
+            | Create Tour
+    // section footer
+    include _footer

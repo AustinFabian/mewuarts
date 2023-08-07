@@ -1,0 +1,59 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='css/styles.css')
+  link(rel='icon', href='img/Austin FX LOGO.png')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title 
+.container
+  // section header
+  include _header
+  .containment
+    include _hidden
+    // tour cards
+    - if(tours.length > 0)
+        .overview
+          each tour in tours 
+            .card
+              .cardimg(style=`background-image: url(img/tours/${tour.imageCover});`)
+                .card1
+                  .divdiv
+                    p.p4=tour.name
+              .card2
+                //- p.p5= `${tour.difficulty} ${tour.duration}-day `
+                p.p6= `${tour.summary}`
+                ul.ul
+                  li.li
+                    i.fa.fa-map-marker(style='font-size: 20px;')
+                    span=tour.startLocation.description 
+                  li.li
+                    i.fa.fa-calendar-o(style='font-size: 20px;')
+                    =tour.startDates[0].toLocaleString('en-us', {month: 'long', year : 'numeric'})
+                  //- li.li
+                  //-   i.fa.fa-flag-o(style='font-size: 20px;')
+                  //-   = `${tour.locations.coordinates.length / 2} stops`
+                  //- li.li
+                  //-   i.fa.fa-user(style='font-size: 20px;')
+                  //-   span=`${tour.maxGroupSize} people`
+              .card3
+                .card3a
+                  ul.ul3
+                    li.li2
+                      span.span1= `$${tour.price} `
+                      |  WORTH
+                    li.li2
+                      span.span1= `${tour.ratingsAverage} `
+                      span= `Rating (${tour.ratingsQuantity})`
+                .card3a
+                  a.but3(href=`/tour/${tour.slug}`)
+                    | Details
+    - if(tours.length === 0)
+      .overview2 
+        p.noTour No Tours Yet Visit Later 
+      
+    // section footer
+    include _footer

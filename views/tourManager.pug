@@ -1,0 +1,52 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title 
+.container
+  // section header
+  .header
+    .headerdiv1
+      a(href='/') All Arts
+    .headerdiv2
+      p.logo MEWUARTS
+    .headerdiv3
+      a.button.but2(href='/createTour')
+        | Post art
+    #bars.bar
+      i.fa.fa-bars(style='color: white;')
+  .containment
+    .hidden
+      ul.ul1
+        li
+          a(href='/') All Arts
+        li
+          a(href='/createTour') Post Art
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#')
+            i.fa.fa-instagram
+        li
+          a(href='#')
+            i.fa.fa-whatsapp
+    // tour management cards
+    .overview#deleteTour
+      each tour in tours 
+        .card
+          .cardimg(style=`background-image: url(img/tours/${tour.imageCover});`)
+            .card1
+              .divdiv
+                p.p4=tour.name
+          .card3
+            .card3a
+                span.delete(title=`${tour.id}`) Delete Art
+            .card3a
+              a.but3.edittour(href=`/updatetour/${tour.slug}`)
+                span.edit Edit Art
+    // section footer
+    include _footer

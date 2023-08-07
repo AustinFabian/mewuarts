@@ -1,0 +1,20 @@
+.header
+    .headerdiv1
+      a(href='/') All tours
+    .headerdiv2
+      p.logo MEWU
+        span ARTS
+    .headerdiv3
+        if user
+          a.nav__el--logout.button.but1
+              | logout
+          a.button.but2(style='display: flex; align-items:center;', href='/me')
+            img.photo(src=`/img/users/${user.photo}`, alt='')
+            span(style='margin-left: 10px;')= user.name.split(' ')[0]
+        else
+          a.button.but1(href='/signup')
+            | Signup
+          a.button.but2(href='/login')
+            | Login
+    #bars.bar
+      i.fa.fa-bars(style='color: white;')

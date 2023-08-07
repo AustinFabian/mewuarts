@@ -1,0 +1,62 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title=title
+.container
+  // section header
+  .header
+    .headerdiv1
+      a(href='/') All tours
+    .headerdiv2
+      img.img1(src='img/Austin FX LOGO.png', alt='')
+    .headerdiv3
+      a.button.but1(href='/signup')
+        | Signup
+      a.button.but2(href='/login')
+        | Login
+    #bars.bar
+      i.fa.fa-bars(style='color: white;')
+  .containment
+    .hidden
+      ul.ul1
+        li
+          a(href='/') All tours
+        li
+          a(href='/signup') Signup
+        li
+          a(href='/login') Login
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#') About us
+        li
+          a(href='#') Contact
+    // section login form
+    .login
+      .alertMe#alertUs
+      form.form.form--signup(action='')
+        h2.p1 SIGNUP TO CREATE AN ACCOUNT
+        label(for='name')
+          p.span1 Name
+          input#name.input(placeholder='Austin', required='', type='text')
+        br
+        label(for='email')
+          p.span2 Email
+          input#email.input(placeholder='me@example.com.', required='', type='text')
+        label(for='email')
+          p.span1 Password
+          input#password.input(placeholder='• • • • • • • •', required,='', minlength='8', type='password')
+        br
+        label(for='password')
+          p.span2 Password Confirm
+          input#passwordConfirm.input(placeholder='• • • • • • • •', required,='', minlength='8', type='password')
+        p.p2
+          button.but3
+            | Signup
+    // section footer
+    include _footer

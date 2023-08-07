@@ -1,0 +1,125 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='css/styles.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='icon', href='/img/Austin FX LOGO.png')
+  title MEWUARTS | Your Account
+.container
+  // section header
+  include _header
+  .containment
+    .hidden.responsive
+      .userslide
+        a(href='', style='text-decoration:underline;')
+          i.fa.fa-cogs(style='font-size: 22px; margin-right: 10px;')
+          | SETTINGS
+        //- a(href='/my-tours')
+        //-   i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
+        //-   | MY BOOKINGS
+        -if(user.role === "user")
+          a(href='')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MY REVIEWS
+        a.removeAccount
+          i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
+          | DELETE ACCOUNT
+        a(style='font-size: 20px;', href='/') ALL ARTS
+      -if (user.role === "admin")
+        p(style='color: white; border-bottom: 2px solid white; padding: 10px 0;')
+          | Admin
+        .userslide
+          a(href='/tourManager')
+            i.fa.fa-map(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE ARTS
+          a(href='/userManager')
+            i.fa.fa-user(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE USERS
+          a(href='/reviewmanager')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE REVIEWS
+          //- a(href='')
+          //-   i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
+          //-   | MANAGE BOOKINGS
+      ul.ul2
+        li(style='padding-right: 10px;')
+          a(href='#')
+            i.fa.fa-instagram
+        li
+          a(href='#')
+            i.fa.fa-whatsapp
+    // section user page
+    .user
+      .user1
+        a(href='', style='text-decoration:underline;')
+          i.fa.fa-cogs(style='font-size: 22px; margin-right: 10px;')
+          | SETTINGS
+        //- a(href='/my-tours')
+        //-   i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
+        //-   | MY BOOKINGS
+        -if(user.role === "user")
+          a(href='')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MY REVIEWS
+        a.removeAccount
+          i.fa.fa-trash(style='font-size: 22px; margin-right: 10px;')
+          | DELETE ACCOUNT
+        -if (user.role === "admin")
+          div(style='padding: 10px 30px;')
+            p(style='color: white; border-bottom: 2px solid white;') Admin
+          a(href='/tourManager')
+            i.fa.fa-map(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE ARTS
+          a(href='/userManager')
+            i.fa.fa-user(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE USERS
+          a(href='/reviewmanager')
+            i.fa.fa-star-o(style='font-size: 22px; margin-right: 10px;')
+            | MANAGE REVIEWS
+          //- a(href='')
+          //-   i.fa.fa-suitcase(style='font-size: 22px; margin-right: 10px;')
+          //-   | MANAGE BOOKINGS
+      .user2
+        .user2a
+          form.userform.form-user-data
+            h2.p1
+              | YOUR ACCOUNT SETTINGS
+            label(for='name')
+              p.span1 Name
+              input.input#name(value=`${user.name.split(' ')[0]}`, type='text')
+            br
+            label(for='email')
+              p.span2 Email
+              input.input#email(value=`${user.email}`, type='text')
+            p.p15
+              span.fancy
+                img.photo7(style='border: 5px solid rgba(16, 21, 64, .5)', src=`img/users/${user.photo}`, alt='')
+              input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+              label.but5(for='photo')
+                | choose New Photo
+            p.p30
+              button.but3
+                | Save Settings
+        .user2b
+          form.userform.form-user-password
+            h2.p1
+              | PASSWORD CHANGE
+            label(for='email')
+              p.span1 Current Password
+              input.input#password-current(placeholder='• • • • • • • •', required,='', minlength='8', type='password')
+            br
+            label(for='email')
+              p.span1 New Password
+              input.input#password(placeholder='• • • • • • • •', required,='', minlength='8', type='password')
+            br
+            label(for='email')
+              p.span1 Confirm New Password
+              input.input#password-confirm(placeholder='• • • • • • • •', required,='', minlength='8', type='password')
+            p.p30
+              button.but3.button--save-password
+                | Save Password
+    // section footer
+    include _footer
